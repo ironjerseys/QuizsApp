@@ -1,0 +1,46 @@
+﻿@page
+@model QuizModel
+@{
+    var question = Model.CurrentQuestion;
+}
+
+<h1>Question @(Model.CurrentQuestionIndex + 1) sur @Model.TotalQuestions</h1>
+
+<h2>@question.QuestionText</h2>
+
+<form method="post">
+    <!-- Champ caché pour conserver l'index actuel de la question -->
+    <input type="hidden" name="currentIndex" value="@Model.CurrentQuestionIndex" />
+
+    <div>
+        <input type="radio" id="choice1" name="answer" value="0" />
+        <label for="choice1">@question.Choice1</label>
+    </div>
+    <div>
+        <input type="radio" id="choice2" name="answer" value="1" />
+        <label for="choice2">@question.Choice2</label>
+    </div>
+    <div>
+        <input type="radio" id="choice3" name="answer" value="2" />
+        <label for="choice3">@question.Choice3</label>
+    </div>
+    <div>
+        <input type="radio" id="choice4" name="answer" value="3" />
+        <label for="choice4">@question.Choice4</label>
+    </div>
+    <button type="submit">Soumettre</button>
+</form>
+
+@if (Model.IsAnswerSubmitted)
+{
+    <p>
+        @if (Model.IsCorrect)
+        {
+            <span style="color: green;">Bonne réponse !</span>
+        }
+        else
+        {
+            <span style="color: red;">Mauvaise réponse. @question.Explanation</span>
+        }
+    </p>
+}
