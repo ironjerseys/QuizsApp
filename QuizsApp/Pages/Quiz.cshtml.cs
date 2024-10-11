@@ -19,7 +19,7 @@ public class QuizModel : PageModel
     public bool IsCorrect { get; set; }
     public int CurrentQuestionIndex { get; set; } = 0;
     public int TotalQuestions { get; set; }
-    public int CorrectAnswersCount { get; set; } = 0; // Compte les bonnes réponses
+    public int CorrectAnswersCount { get; set; } = 0; 
 
     public async Task OnGetAsync()
     {
